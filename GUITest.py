@@ -3,6 +3,7 @@ from SpeechHandler import *
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
+from playsound import playsound
 
 # Code generated from .ui file
 class Ui_MainWindow(object):
@@ -22,6 +23,7 @@ class Ui_MainWindow(object):
         self.talkButton = QtWidgets.QPushButton(self.centralwidget)
         self.talkButton.setGeometry(QtCore.QRect(100, 460, 551, 31))
         self.talkButton.setObjectName("talkButton")
+        self.talkButton.clicked.connect(self.onTalkButtonClicked)
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(20, 510, 701, 251))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
@@ -109,6 +111,12 @@ class Ui_MainWindow(object):
         self.menuSelect.setTitle(_translate("MainWindow", "Select..."))
         self.actionChoose_Dad.setText(_translate("MainWindow", "Choose Dad..."))
 
+    def onTalkButtonClicked(self):
+        playsound('resources/audio/startup.mp3')
+        respondToUser()
+
+
+
 def respondToUser():
     # convert user's speech to string
     userInput = SpeechHandler.listen()
@@ -148,7 +156,6 @@ def respondToUser():
     # produce speech to text output!
     SpeechHandler.speak(output)
     return
-
 
 
 if __name__ == "__main__":
