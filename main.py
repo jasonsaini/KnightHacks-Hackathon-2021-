@@ -225,7 +225,10 @@ def respondToUser():
     output = ""
 
     # Greet user
-    if userInput.startswith('Hello') or userInput.startswith('hi') or userInput.startswith('hey'):
+    if not userInput:
+        output = "Sorry, I didn't understand that."
+        
+    elif userInput.startswith('Hello') or userInput.startswith('hi') or userInput.startswith('hey'):
         output = ("Hello say help for a list of commands!")
 
     # tell user joke accordingly
