@@ -4,7 +4,7 @@ DadBot 2.0 is an interactive bot that reflects the personality of a typical dad!
 You can start by running main while all directories are maintained as they are on this GitHub.
 
 # TO RUN: Extract files and run batch file, Python 3 must be installed! Script will install any remaining dependencies
-# Please be patient, multithreading has not been added! Process will halt entire application and window! (~ 5 seconds)
+# Please be patient, multithreading has not been added! Process will halt entire application and window! (~ 5 seconds, especially if no commands are detected! Speak clearly!)
 
 # What can he do?
 
