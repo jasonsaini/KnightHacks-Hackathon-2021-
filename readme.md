@@ -11,9 +11,7 @@ with the word "joke" in it will do the trick!
 
 Example: "Tell me one of your dad jokes"
 
-# BONUS: If you add the keywords:
-# "programming", "coding", & "computer" 
-# DadBot will reply with a tech-related joke!
+# BONUS: If you add the keywords: "programming", "coding", & "computer",  DadBot will reply with a tech-related joke!
 # Example: "Tell me a programming joke"
 
 2) Ask him for life advice, and he will respond with an insightful
