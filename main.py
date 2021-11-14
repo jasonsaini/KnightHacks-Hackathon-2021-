@@ -9,6 +9,10 @@ from PyQt5.QtGui import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+
+        #set window title
+        MainWindow.setWindowTitle("DadBot 2.0")
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 1000)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -154,7 +158,10 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Dadbot 2.0"))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("resources\icons\lol2.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        MainWindow.setWindowIcon(icon)
         self.menuSelect.setTitle(_translate("MainWindow", "Choose Dad..."))
         self.actionMr_Turner.setText(_translate("MainWindow", "Mr. Turner"))
         self.actionMr_Turner_Bonus.setText(_translate("MainWindow", "Mr. Turner (Bonus!)"))
