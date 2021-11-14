@@ -1,25 +1,27 @@
 import json
 import requests
-from dadjokes import dadjokes
+import pyjokes
+from dadjokes import Dadjoke
 from pyowm import OWM
+
+# initalize OWM weather API & token
+owm = OWM('10fe228afe45ed36923e6bb66c185efa')
+mgr = owm.weather_manager()
 
 
 class DadBot:
-
-    # initalize OWM weather API & token!
-    owm = OWM('10fe228afe45ed36923e6bb66c185efa')
-    mgr = owm.weather_manager()
 
     # finds location from weather command message
     def parseLocation(message):
         location = ""
         # split message string into array 
-        wordArr = message.content.split(" ")
+        wordArr = message.split(" ")
         # initialize word count
         wordCount = 0;
 
         # iterate through string array for keywords ("in" and "?")
-        for i in words:
+        for i in wordArr:
+            # track word count
             wordCount += 1
             # if current word is in, location string should be after
             if i == "in":
@@ -27,7 +29,8 @@ class DadBot:
             # if message contains '?', location is behind it
             if '?' in location:
                 location = location[:-1]
-
+    
+        return location
     # returns a weather info messaage based on location
     def getWeather(location):
         observation = mgr.weather_at_place(location)
@@ -44,20 +47,27 @@ class DadBot:
         weatherDict = {'location' : location, 'temperature' : temperature, 'weather': weather}
         
         # return formatted message
-        return (f"{weatherDict[location]} : {weatherDictp['weather']} and it's {weatherDict['temperature']}\xb0F today!")
+        return (f"{weatherDict['weather']} and it's {weatherDict['temperature']}\xb0F in {weatherDict['location']} today!")
     
     def getJoke():
         # retrieve joke string from Dadjoke API
         dadjoke = Dadjoke()
         return dadjoke.joke
+    
+    def getGeekyJoke():
+        geekyJoke = pyjokes.get_joke(language= 'en', category= 'neutral')
+        return geekyJoke
 
-    def getHiJoke(messaage):
+    def getHiJoke(message):
         # split message into array by spaces
-        wordArr = messaage.content.split(" ")
+        wordArr = message.split(" ")
         # remove "I'm" from word array
-        words.pop(0)
-        
-        s = ' '.join(words)
+        if message.startswith("i\'m"):
+            wordArr.pop(0)
+        elif message.startswith("I am"):
+            wordArr.pop(0)
+            wordArr.pop(0)
+        s = ' '.join(wordArr)
         # return Hi quip
         return (f"Hi {s.capitalize()}! I'm DadBot!")
     
@@ -67,7 +77,8 @@ class DadBot:
         jsonData = json.loads(response.text)
         
         # returns message as "[quote] - [author]"
-        return (jsonData[0]['q'] + " - " + jsonData[0]['a']);
+        #return (jsonData[0]['q'] + "..." + jsonData[0]['a'] );
+        return ("Here's a quote by " + jsonData[0]['a'] + " ... " + jsonData[0]['q'])
 
     def getHelpMsg():
         #build string (for neatness)
@@ -77,23 +88,3 @@ class DadBot:
         helpMsg += "Ask me for life advice/quotes!\n"
         helpMsg += "Start a sentence with \"I\'m\""
         return helpMsg
-
-
-    def executeCommand(message):
-        # greet user and offer help command
-        if message.startswith('Hello') or message.startswith('hi') or message.startswith('hey'):
-            return ("Hello!")
-        
-        if 'joke' in message:
-            return getJoke()
-        
-        if message.startswith('i\m') or message.startswith('I am'):
-            return getHiJoke(message);
-        
-        if 'weather' in message:
-            location = parseLocation(message)
-            return getWeather(location)
-
-        if("quote" or "advice" in message):
-            return getQuote()
-        
