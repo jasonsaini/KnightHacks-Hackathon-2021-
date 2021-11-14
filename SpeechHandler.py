@@ -31,11 +31,9 @@ class SpeechHandler:
         #print("Say something...")
         with sr.Microphone() as source:
             recognizer.adjust_for_ambient_noise(source, duration = 0.2)
-            audio = recognizer.listen(source, timeout= None, phrase_time_limit= 5)
+            audio = recognizer.listen(source, timeout= 5, phrase_time_limit= 5)
             # return transcribed audio as string
         try:
             return recognizer.recognize_google(audio)
-        except sr.UnknownValueError:
-            return ""
-        except sr.RequestError:
+        except Exception:
             return ""
