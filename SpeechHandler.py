@@ -31,7 +31,7 @@ class SpeechHandler:
         #print("Say something...")
         with sr.Microphone() as source:
             recognizer.adjust_for_ambient_noise(source, duration = 0.2)
-            audio = recognizer.listen(source)
+            audio = recognizer.listen(source, timeout= None, phrase_time_limit= 5)
             # return transcribed audio as string
         try:
             return recognizer.recognize_google(audio)
