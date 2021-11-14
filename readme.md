@@ -9,21 +9,21 @@ After pressing the "Talk to DadBot" button and hearing the sound to start speaki
 1) Ask him to tell you one of his infamous dad jokes! Any phrase
 with the word "joke" in it will do the trick!
 
-Example: "Tell me one of your dad jokes"
+    Example: "Tell me one of your dad jokes"
 
-# BONUS: If you add the keywords: "programming", "coding", & "computer",  DadBot will reply with a tech-related joke!
-# Example: "Tell me a programming joke"
+    BONUS: If you add the keywords: "programming", "coding", & "computer",  DadBot will reply with a tech-related joke!
+    Example: "Tell me a programming joke"
 
 2) Ask him for life advice, and he will respond with an insightful
 quote.
 
-Example: "I need some life advice" or "Give me a quote"
+    Example: "I need some life advice" or "Give me a quote"
 
 3) Ask him the weather in any city, and he will provide you a detailed description!
 
-Example: "What's the weather like in Orlando?"
+    Example: "What's the weather like in Orlando?"
 
-Note: the key phrase here is "weather in (city)"
+    Note: the key phrase here is "weather in (city)"
 
 
 There is a dropdown on the top left where you can choose which dad takes the center stage as 
